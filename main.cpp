@@ -21,14 +21,14 @@ int main(int argc, char* argv[])
         }
         myfile.close();
     }
-
-    else std::cout << "Unable to open file"; 
-    std::string commands = argv[1];
-    std::vector<std::string> result;
-    std::stringstream s_stream(commands);
+    else cout << "Unable to open file"; 
+    string commands = argv[1];
+    cout << commands;
+    /*vector<string> result;
+    stringstream s_stream(commands);
     while(s_stream.good())
     {
-    std::string substr;
+    string substr;
         getline(s_stream, substr, ',');
         result.push_back(substr);
     }
@@ -50,6 +50,6 @@ int main(int argc, char* argv[])
         else if(result[i].substr(0,8) == "deleteMi")
             mm.deleteMin();
 
-    }
+    }*/
 
 }

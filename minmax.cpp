@@ -276,7 +276,7 @@ using std::stringstream;
     {
         int min = A[0];
         A[0] = A[size-1];
-        A[size-1] = NULL;
+        A[size-1] = 0;
         size--;
         trickleDown(0);
         return "deleted " + min;
@@ -293,7 +293,7 @@ using std::stringstream;
         maxIndex = 2;
         max = A[maxIndex];
         A[maxIndex] = A[size-1];
-        A[size-1] = NULL;
+        A[size-1] = 0;
         size--;
         trickleDown(maxIndex);
         return "deleted " + max;
