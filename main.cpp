@@ -5,6 +5,9 @@
 #include <math.h>
 #include "minmax.h"
 #include <fstream>
+#include <string>
+#include <cctype>
+#include <algorithm>
 
 using namespace std;
 
@@ -23,8 +26,10 @@ int main(int argc, char* argv[])
     }
     else cout << "Unable to open file"; 
     string commands = argv[1];
-    cout << commands;
-    /*vector<string> result;
+    vector<string> result;
+    
+    commands.erase(std::remove_if(commands.begin(), commands.end(), ::isspace), commands.end());
+    
     stringstream s_stream(commands);
     while(s_stream.good())
     {
@@ -32,24 +37,26 @@ int main(int argc, char* argv[])
         getline(s_stream, substr, ',');
         result.push_back(substr);
     }
-
-    for(int i = result.size(); i > 0; i--)
+ 
+    
+    for(int i = 0; i < result.size(); i++)
     {
+	
         if(result[i].substr(0,5) == "printH")
             mm.printHeap();
         else if(result[i].substr(0,5) == "getMi")
-            mm.getMin();
+            cout << mm.getMin();
         else if(result[i].substr(0,5) == "getMa")
-            mm.getMax();
+            cout << mm.getMax();
         else if(result[i].substr(0,5) == "inser")
         {
-            mm.insert(mm.getInt(result[i]));
+            cout << "inserted " <<mm.insert(mm.getInt(result[i]));
         }
         else if(result[i].substr(0,8) == "deleteMa")
-            mm.deleteMax();
+            cout << mm.deleteMax();
         else if(result[i].substr(0,8) == "deleteMi")
-            mm.deleteMin();
+            cout << mm.deleteMin();
 
-    }*/
+    }
 
 }
