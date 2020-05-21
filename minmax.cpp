@@ -103,7 +103,7 @@ using std::stringstream;
             for(int i = 0; i<descSize;i++){ //get minimum from children and grandchildren, stored in an array
                 
 		//cout << "in for loop";
-		cout << "this is the " << i << " " << descendants[i]<<std::endl;
+		//cout << "this is the " << i << " " << descendants[i]<<std::endl;
                      
                     if(descendants[i] < descendants[m])
                     {
@@ -114,8 +114,8 @@ using std::stringstream;
                             isGrandChild = false;
 			indexOfMin = descIndex[i];
                     }
-		    cout<<"descendants[m] the min is " << descendants[m] << std::endl;
-		    cout<<"descendants[m] is grandchild? " << isGrandChild << std::endl;
+		    //cout<<"descendants[m] the min is " << descendants[m] << std::endl;
+		    //cout<<"descendants[m] is grandchild? " << isGrandChild << std::endl;
                 
             }
             if(isGrandChild){
@@ -145,49 +145,61 @@ using std::stringstream;
     }
 
 
-    void Minmax::trickleDownMax(int index)
+   void Minmax::trickleDownMax(int index)
     {
-	//cout << "in trickledownmax";
-    	//cout << size;	
         int m;
-	int descSize = 0;
         int descendants[6];
+	int descIndex[6];
         bool isGrandChild;
+	//cout << size;
+	int descSize = 0;
+	//cout << "in trickedownmin";
         if (getLeftChild(index) < (size-1))
         {
-		//cout <<"infirst if looop";
+	    //cout << "in first if";
             descendants[descSize] = A[getLeftChild(index)];
-            descSize++;
+	    descIndex[descSize] = getLeftChild(index);
+	    descSize++;
+        
             if(getRightChild(index) < (size-1))
             {
-		
                 descendants[descSize] = A[getRightChild(index)];
+		    descIndex[descSize] = getRightChild(index);
 		descSize++;
+
                 //grandchildren can only exist if there are two children for the passed index
                 if(getLeftChild(getLeftChild(index)) < (size-1))
                 {
                     descendants[descSize] = A[getLeftChild(getLeftChild(index))];
+			descIndex[descSize] = getLeftChild(getLeftChild(index));
 		    descSize++;
                 }
                 if(getRightChild(getLeftChild(index)) < (size-1))
                 {
                     descendants[descSize] = A[getRightChild(getLeftChild(index))];
+			descIndex[descSize] = getRightChild(getLeftChild(index));
 		    descSize++;
                 }
-                if(getLeftChild(getRightChild(index)) < (size-1))
+                if(getLeftChild(getRightChild(index)) < (size - 1))
                 {
                     descendants[descSize] = A[getLeftChild(getRightChild(index))];
+			descIndex[descSize] = getLeftChild(getRightChild(index));
 		    descSize++;
                 }
                 if(getRightChild(getRightChild(index)) < (size-1))
                 {
                     descendants[descSize] = A[getRightChild(getRightChild(index))];
+			descIndex[descSize] = getRightChild(getRightChild(index));
 		    descSize++;
                 }
             }
 	    m = 0;
-            for(int i = 0; i<descSize; i++){ //get minimum from children and grandchildren, stored in an array
-                cout << "this is the " << i << " " << descendants[i]<<std::endl;
+	    int indexOfMin = 0;
+            for(int i = 0; i<descSize;i++){ //get minimum from children and grandchildren, stored in an array
+                
+		//cout << "in for loop";
+		//cout << "this is the " << i << " " << descendants[i]<<std::endl;
+                     
                     if(descendants[i] < descendants[m])
                     {
                         m = i;
@@ -195,29 +207,32 @@ using std::stringstream;
                             isGrandChild = true;
                         else
                             isGrandChild = false;
+			indexOfMin = descIndex[i];
                     }
+		    //cout<<"descendants[m] the min is " << descendants[m] << std::endl;
+		    //cout<<"descendants[m] is grandchild? " << isGrandChild << std::endl;
                 
             }
             if(isGrandChild){
-                if(A[m] > A[index])
+                if(A[indexOfMin] > A[index])
                 {
-                    int temp = A[m];
-                    A[m] = A[index];
+                    int temp = A[indexOfMin];
+                    A[indexOfMin] = A[index];
                     A[index] = temp;
-                    if(A[m] < A[getParent(m)])
+                    if(A[indexOfMin] < A[getParent(indexOfMin)])
                     {
-                        int temp = A[m];
-                        A[m] = A[getParent(m)];
-                        A[getParent(m)] = A[m];
+                        int temp = A[indexOfMin];
+                        A[indexOfMin] = A[getParent(indexOfMin)];
+                        A[getParent(indexOfMin)] = A[indexOfMin];
                     }
-                    trickleDownMax(m);
+                    trickleDownMax(indexOfMin);
                 }
 
             }
             else
-                if(A[m] > A[index]){ //swap A[m] and A[i]
-                    int temp = A[m];
-                    A[m] = A[index];
+                if(A[indexOfMin] > A[index]){ //swap A[m] and A[i]
+                    int temp = A[indexOfMin];
+                    A[indexOfMin] = A[index];
                     A[index] = temp;
                 }
         }
