@@ -314,7 +314,8 @@ using std::stringstream;
         if(A[1] > A[2])
             max =  A[1];
 	//cout << "past if 2";
-        max = A[2];
+	else
+            max = A[2];
 	//cout << "value of max is " << max;
 	results = "max = " + to_string(max);
 	//cout << results;
@@ -333,7 +334,7 @@ using std::stringstream;
         A[0] = A[size-1];
         A[size-1] = 0;
         size--;
-	cout <<"new A0 is "<< A[0]<<std::endl;
+	//cout <<"new A0 is "<< A[0]<<std::endl;
         trickleDown(0);
         return "deleted " + to_string(min);
 
