@@ -55,7 +55,7 @@ using std::stringstream;
         int m;
         int descendants[6];
         bool isGrandChild;
-	cout << size;
+	//cout << size;
 	int descSize = 0;
 	//cout << "in trickedownmin";
         if (getLeftChild(index) < (size-1))
@@ -95,7 +95,7 @@ using std::stringstream;
             for(int i = 0; i<descSize;i++){ //get minimum from children and grandchildren, stored in an array
                 
 		//cout << "in for loop";
-		cout << descendants[i]<<std::endl;
+		//cout << descendants[i]<<std::endl;
                      
                     if(descendants[i] < descendants[m])
                     {
@@ -137,7 +137,7 @@ using std::stringstream;
     void Minmax::trickleDownMax(int index)
     {
 	//cout << "in trickledownmax";
-    	cout << size;	
+    	//cout << size;	
         int m;
 	int descSize = 0;
         int descendants[6];
