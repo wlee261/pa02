@@ -100,7 +100,7 @@ using std::stringstream;
                     if(descendants[i] < descendants[m])
                     {
                         m = i;
-                        if(m > 2)
+                        if(m > 1)
                             isGrandChild = true;
                         else
                             isGrandChild = false;
@@ -182,7 +182,7 @@ using std::stringstream;
                     if(descendants[i] < descendants[m])
                     {
                         m = i;
-                        if(m > 2)
+                        if(m > 1)
                             isGrandChild = true;
                         else
                             isGrandChild = false;
