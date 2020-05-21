@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
     else cout << "Unable to open file"; 
     string commands = argv[1];
     vector<string> result;
-    
+    //mm.getInt("hello 50");
     commands.erase(std::remove_if(commands.begin(), commands.end(), ::isspace), commands.end());
     
     stringstream s_stream(commands);
@@ -42,20 +42,26 @@ int main(int argc, char* argv[])
     for(int i = 0; i < result.size(); i++)
     {
 	
-        if(result[i].substr(0,5) == "printH")
+        if(result[i].substr(0,5) == "print")
+	{
             mm.printHeap();
-        else if(result[i].substr(0,5) == "getMi")
-            cout << mm.getMin();
+	    cout << endl;
+	}
+        else if(result[i].substr(0,5) == "getMi"){
+            //cout << "in main get min";
+	    cout << mm.getMin() << endl;
+	}
         else if(result[i].substr(0,5) == "getMa")
-            cout << mm.getMax();
+            cout << mm.getMax() << endl;
         else if(result[i].substr(0,5) == "inser")
         {
-            cout << "inserted " <<mm.insert(mm.getInt(result[i]));
+	    mm.insert(mm.getInt(result[i]));
+            cout << "inserted " <<mm.getInt(result[i]) << endl;
         }
         else if(result[i].substr(0,8) == "deleteMa")
-            cout << mm.deleteMax();
+            cout << mm.deleteMax() << endl;
         else if(result[i].substr(0,8) == "deleteMi")
-            cout << mm.deleteMin();
+            cout << mm.deleteMin() << endl;
 
     }
 

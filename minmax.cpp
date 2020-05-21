@@ -4,7 +4,9 @@
 #include <sstream>
 #include <math.h>
 #include "minmax.h"
-
+#include <cctype>
+using std::to_string;
+using std::atoi;
 using std::cout;
 using std::string;
 using std::vector;
@@ -12,7 +14,7 @@ using std::stringstream;
 
     int Minmax::getParent(int index)
     {
-        return((index-1)/2);
+        return((floor(index-1)/2));
     }
     int Minmax::getLeftChild(int index)
     {
@@ -23,13 +25,13 @@ using std::stringstream;
         return(2*index+2);
     }
 
-    bool Minmax::onMinLevel(int index)
+    bool Minmax::onMaxLevel(int index)
     {
         if(int(log2(index+1))%2 == 1)
             return true;
         return false;
     }
-    bool Minmax::onMaxLevel(int index)
+    bool Minmax::onMinLevel(int index)
     {
         if(int(log2(index+1))%2 == 0)
             return true;
@@ -38,17 +40,14 @@ using std::stringstream;
 
     void Minmax::trickleDown(int index)
     {
-        if(index == 0)
-            return;
-
-        if(getParent(index) == 0)
-            return;
-
-        if(onMinLevel(index))
-            trickleDownMin(index);
-        else 
-            trickleDownMax(index);
-
+	if(index < (size-1))
+	{
+            if(onMinLevel(index))
+                trickleDownMin(index);
+            else 
+            	trickleDownMax(index);
+	}
+	return;
     }
 
     void Minmax::trickleDownMin(int index)
@@ -56,36 +55,48 @@ using std::stringstream;
         int m;
         int descendants[6];
         bool isGrandChild;
-        if (A[getLeftChild(index)])
+	cout << size;
+	int descSize = 0;
+	//cout << "in trickedownmin";
+        if (getLeftChild(index) < (size-1))
         {
-            descendants[0] = A[getLeftChild(index)];
+	    //cout << "in first if";
+            descendants[descSize] = A[getLeftChild(index)];
+	    descSize++;
         
-            if(A[getRightChild(index)])
+            if(getRightChild(index) < (size-1))
             {
-                descendants[1] = A[getRightChild(index)];
+                descendants[descSize] = A[getRightChild(index)];
+		descSize++;
 
                 //grandchildren can only exist if there are two children for the passed index
-                if(A[getLeftChild(getLeftChild(index))])
+                if(getLeftChild(getLeftChild(index)) < (size-1))
                 {
-                    descendants[2] = A[getLeftChild(getLeftChild(index))];
+                    descendants[descSize] = A[getLeftChild(getLeftChild(index))];
+		    descSize++;
                 }
-                if(A[getRightChild(getLeftChild(index))])
+                if(getRightChild(getLeftChild(index)) < (size-1))
                 {
-                    descendants[3] = A[getRightChild(getLeftChild(index))];
+                    descendants[descSize] = A[getRightChild(getLeftChild(index))];
+		    descSize++;
                 }
-                if(A[getLeftChild(getRightChild(index))])
+                if(getLeftChild(getRightChild(index)) < (size - 1))
                 {
-                    descendants[4] = A[getLeftChild(getRightChild(index))];
+                    descendants[descSize] = A[getLeftChild(getRightChild(index))];
+		    descSize++;
                 }
-                if(A[getRightChild(getRightChild(index))])
+                if(getRightChild(getRightChild(index)) < (size-1))
                 {
-                    descendants[5] = A[getRightChild(getRightChild(index))];
+                    descendants[descSize] = A[getRightChild(getRightChild(index))];
+		    descSize++;
                 }
             }
-            for(int i = 0; i++; i < 6){ //get minimum from children and grandchildren, stored in an array
-                m = 0;
-                if(descendants[i])
-                {
+	    m = 0;
+            for(int i = 0; i<descSize;i++){ //get minimum from children and grandchildren, stored in an array
+                
+		//cout << "in for loop";
+		cout << descendants[i]<<std::endl;
+                     
                     if(descendants[i] < descendants[m])
                     {
                         m = i;
@@ -94,7 +105,7 @@ using std::stringstream;
                         else
                             isGrandChild = false;
                     }
-                }
+                
             }
             if(isGrandChild){
                 if(A[m] < A[index])
@@ -125,39 +136,47 @@ using std::stringstream;
 
     void Minmax::trickleDownMax(int index)
     {
+	//cout << "in trickledownmax";
+    	cout << size;	
         int m;
+	int descSize = 0;
         int descendants[6];
         bool isGrandChild;
-        if (A[getLeftChild(index)])
+        if (getLeftChild(index) < (size-1))
         {
-            descendants[0] = A[getLeftChild(index)];
-        
-            if(A[getRightChild(index)])
+		//cout <<"infirst if looop";
+            descendants[descSize] = A[getLeftChild(index)];
+            descSize++;
+            if(getRightChild(index) < (size-1))
             {
-                descendants[1] = A[getRightChild(index)];
-
+		
+                descendants[descSize] = A[getRightChild(index)];
+		descSize++;
                 //grandchildren can only exist if there are two children for the passed index
-                if(A[getLeftChild(getLeftChild(index))])
+                if(getLeftChild(getLeftChild(index)) < (size-1))
                 {
-                    descendants[2] = A[getLeftChild(getLeftChild(index))];
+                    descendants[descSize] = A[getLeftChild(getLeftChild(index))];
+		    descSize++;
                 }
-                if(A[getRightChild(getLeftChild(index))])
+                if(getRightChild(getLeftChild(index)) < (size-1))
                 {
-                    descendants[3] = A[getRightChild(getLeftChild(index))];
+                    descendants[descSize] = A[getRightChild(getLeftChild(index))];
+		    descSize++;
                 }
-                if(A[getLeftChild(getRightChild(index))])
+                if(getLeftChild(getRightChild(index)) < (size-1))
                 {
-                    descendants[4] = A[getLeftChild(getRightChild(index))];
+                    descendants[descSize] = A[getLeftChild(getRightChild(index))];
+		    descSize++;
                 }
-                if(A[getRightChild(getRightChild(index))])
+                if(getRightChild(getRightChild(index)) < (size-1))
                 {
-                    descendants[5] = A[getRightChild(getRightChild(index))];
+                    descendants[descSize] = A[getRightChild(getRightChild(index))];
+		    descSize++;
                 }
             }
-            for(int i = 0; i++; i < 6){ //get minimum from children and grandchildren, stored in an array
-                m = 0;
-                if(descendants[i])
-                {
+	    m = 0;
+            for(int i = 0; i<descSize; i++){ //get minimum from children and grandchildren, stored in an array
+                
                     if(descendants[i] < descendants[m])
                     {
                         m = i;
@@ -166,7 +185,7 @@ using std::stringstream;
                         else
                             isGrandChild = false;
                     }
-                }
+                
             }
             if(isGrandChild){
                 if(A[m] > A[index])
@@ -198,7 +217,7 @@ using std::stringstream;
     {
         if(onMinLevel(index))
         {
-            if(A[getParent(index)] && (A[index] > A[getParent(index)]))
+            if((index != 0) && (A[index] > A[getParent(index)]))
             {
                 int temp = A[index];
                 A[index] = A[getParent(index)];
@@ -208,7 +227,7 @@ using std::stringstream;
             else
                 bubbleUpMin(index);
         }
-        else if(A[getParent(index)] && (A[index] < A[getParent(index)]))
+        else if((index != 0) && (A[index] < A[getParent(index)]))
         {
             int temp = A[index];
             A[index] = A[getParent(index)];
@@ -221,7 +240,7 @@ using std::stringstream;
 
     void Minmax::bubbleUpMin(int index)
     {
-        if(A[getParent(getParent(index))])
+        if(getParent(index) != 0)
         {
             if(A[index] < A[getParent(getParent(index))])
             {
@@ -235,7 +254,7 @@ using std::stringstream;
 
     void Minmax::bubbleUpMax(int index)
     {
-        if(A[getParent(getParent(index))])
+        if(getParent(index) != 0)
         {
             if(A[index] > A[getParent(getParent(index))])
             {
@@ -251,25 +270,35 @@ using std::stringstream;
     {
         A[size] = value;
         bubbleUp(size);
+	//cout << "asfter insertion " << A[size];
         size++;
         return value;
     }
 
     string Minmax::getMax()
     {
-        int max;
-        if(size = 0)
+	//cout << "in minmax getmax";
+        string results;
+	int max;
+        if(size == 0){
+	   // cout << "returned 0";
             return "0";
+	}
+	//cout << "past if 1";
         if(A[1] > A[2])
             max =  A[1];
+	//cout << "past if 2";
         max = A[2];
-        return "max = " + max;
+	//cout << "value of max is " << max;
+	results = "max = " + to_string(max);
+	//cout << results;
+        return results;
     }
     string Minmax::getMin()
     {
-        if(size = 0)
+        if(size == 0)
             return "0";
-        return "min = " + A[0];
+        return "min = " + to_string(A[0]);
     }
 
     string Minmax::deleteMin()
@@ -278,25 +307,27 @@ using std::stringstream;
         A[0] = A[size-1];
         A[size-1] = 0;
         size--;
+	cout <<"new A0 is "<< A[0]<<std::endl;
         trickleDown(0);
-        return "deleted " + min;
+        return "deleted " + to_string(min);
 
     }
     string Minmax::deleteMax()
     {
         int maxIndex;
         int max;
-        if(size = 0)
+        if(size == 0)
             return "0";
         if(A[1] > A[2])
             maxIndex =  1;
-        maxIndex = 2;
+	else
+            maxIndex = 2;
         max = A[maxIndex];
         A[maxIndex] = A[size-1];
         A[size-1] = 0;
         size--;
         trickleDown(maxIndex);
-        return "deleted " + max;
+        return "deleted " + to_string(max);
     }
 
     void Minmax::printHeap()
@@ -310,18 +341,33 @@ using std::stringstream;
 
     int Minmax::getInt(string command)
     {
-        stringstream ss;
+        /*stringstream ss;
         ss << command;
 
         string temp;
         int found;
         int value; 
-
+	cout << "1";
         while(!ss.eof())
         {
+	    cout << "2";
             ss >> command;
-            if(stringstream(temp) >> found)
-                value = found;
+            if(stringstream(temp) >> found){
+                cout << found << " ";
+		cout << "3";
+	    }
+	        //value = found;
         }
-        return value;
+	cout << "4";
+        return value;*/
+	        int i = 0;
+		for(; i < command.length(); i++)
+		{
+			if(isdigit(command[i])) break;
+		}
+		command = command.substr(i, command.length() - i);
+		int seperate = atoi(command.c_str());
+		
+		return seperate;
+	
     }

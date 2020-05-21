@@ -28,7 +28,6 @@ class Minmax{
 			std::string deleteMin();
 			void printHeap();
 			int getInt(std::string command);
-		private:
 			int A[1000000];
 			int size = 0;
 	};
