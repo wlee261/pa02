@@ -54,6 +54,7 @@ using std::stringstream;
     {
         int m;
         int descendants[6];
+	int descIndex[6];
         bool isGrandChild;
 	//cout << size;
 	int descSize = 0;
