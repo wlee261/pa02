@@ -115,13 +115,13 @@ using std::stringstream;
                     int temp = A[m];
                     A[m] = A[index];
                     A[index] = temp;
-                    if(A[index] > A[getParent(m)])
+                    if(A[m] > A[getParent(m)])
                     {
-                        int temp = A[index];
-                        A[index] = A[getParent(m)];
-                        A[getParent(m)] = A[index];
+                        int temp = A[m];
+                        A[m] = A[getParent(m)];
+                        A[getParent(m)] = A[m];
                     }
-                    trickleDownMin(index);
+                    trickleDownMin(m);
                 }
 
             }
@@ -195,13 +195,13 @@ using std::stringstream;
                     int temp = A[m];
                     A[m] = A[index];
                     A[index] = temp;
-                    if(A[index] < A[getParent(m)])
+                    if(A[m] < A[getParent(m)])
                     {
-                        int temp = A[index];
-                        A[index] = A[getParent(m)];
-                        A[getParent(m)] = A[index];
+                        int temp = A[m];
+                        A[m] = A[getParent(m)];
+                        A[getParent(m)] = A[m];
                     }
-                    trickleDownMax(index);
+                    trickleDownMax(m);
                 }
 
             }
