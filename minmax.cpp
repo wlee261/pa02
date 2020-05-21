@@ -105,6 +105,8 @@ using std::stringstream;
                         else
                             isGrandChild = false;
                     }
+		    cout<<"descendants[m] the min is " << descendants[m] << std::endl;
+		    cout<<"descendants[m] is grandchild? " << isGrandChild << std::endl;
                 
             }
             if(isGrandChild){
