@@ -44,7 +44,7 @@ using std::stringstream;
 	{
             if(onMinLevel(index))
                 trickleDownMin(index);
-            else 
+            else if(onMaxLevel(index))
             	trickleDownMax(index);
 	}
 	return;
