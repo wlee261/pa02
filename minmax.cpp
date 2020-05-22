@@ -31,7 +31,7 @@ using std::stringstream;
     }
     bool Minmax::onMinLevel(int index)
     {
-        return(!onMaxLevel());
+        return(!onMaxLevel(index));
     }
 
     void Minmax::trickleDown(int index)
