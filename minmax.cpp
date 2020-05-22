@@ -103,7 +103,7 @@ using std::stringstream;
             for(int i = 0; i<descSize;i++){ //get minimum from children and grandchildren, stored in an array
                 
 		//cout << "in for loop";
-		cout << "this is the " << i << " " << descendants[i]<<std::endl;
+		//cout << "this is the " << i << " " << descendants[i]<<std::endl;
                      
                     if(descendants[i] < descendants[m])
                     {
