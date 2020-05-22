@@ -114,7 +114,7 @@ using std::stringstream;
 		    //cout<<"descendants[m] is grandchild? " << isGrandChild << std::endl;
                 
             }
-	    cout << "the min descendant is " << descendants[m] << " for A[0] of " << A[0] << std::endl;
+	    //cout << "the min descendant is " << descendants[m] << " for A[0] of " << A[0] << std::endl;
             if(isGrandChild){
                 if(A[indexOfMin] < A[index])
                 {
@@ -140,6 +140,7 @@ using std::stringstream;
 			//trickleDownMax(index);
                 }
         }
+	cout << "A[0] is " << A[0] << std::endl;
 
     }
 
@@ -341,7 +342,7 @@ using std::stringstream;
         size--;
 	//cout <<"new A0 is "<< A[0]<<std::endl;
         trickleDown(0);
-	    cout << "min is " << min << std::endl;
+	   // cout << "min is " << min << std::endl;
         return "deleted " + to_string(min);
 
     }
