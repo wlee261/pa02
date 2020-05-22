@@ -95,12 +95,12 @@ using std::stringstream;
                 }
             }
 	    m = 0;
-	    int indexOfMin;
+	    int indexOfMin = descIndex[0];
             for(int i = 0; i<descSize;i++){ //get minimum from children and grandchildren, stored in an array
                 
 		//cout << "in for loop";
 		//cout << "this is the " << i << " " << descendants[i]<<std::endl;
-                     
+                    
                     if(descendants[i] < descendants[m])
                     {
                         m = i;
@@ -142,7 +142,7 @@ using std::stringstream;
 			//trickleDownMax(index);
                 }
         }
-	cout << "A[0] is 3 " << A[0] << std::endl;
+	//cout << "A[0] is 3 " << A[0] << std::endl;
 
     }
 
