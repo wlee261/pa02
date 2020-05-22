@@ -36,7 +36,7 @@ using std::stringstream;
 
     void Minmax::trickleDown(int index)
     {
-	if(index < (size-1))
+	if(index < (size))
 	{
             if(onMinLevel(index))
                 trickleDownMin(index);
@@ -55,39 +55,39 @@ using std::stringstream;
 	//cout << size;
 	int descSize = 0;
 	//cout << "in trickedownmin";
-        if (getLeftChild(index) < (size-1))
+        if (getLeftChild(index) < (size))
         {
 	    //cout << "in first if";
             descendants[descSize] = A[getLeftChild(index)];
 	    descIndex[descSize] = getLeftChild(index);
 	    descSize++;
         
-            if(getRightChild(index) < (size-1))
+            if(getRightChild(index) < (size))
             {
                 descendants[descSize] = A[getRightChild(index)];
 		    descIndex[descSize] = getRightChild(index);
 		descSize++;
 
                 //grandchildren can only exist if there are two children for the passed index
-                if(getLeftChild(getLeftChild(index)) < (size-1))
+                if(getLeftChild(getLeftChild(index)) < (size))
                 {
                     descendants[descSize] = A[getLeftChild(getLeftChild(index))];
 			descIndex[descSize] = getLeftChild(getLeftChild(index));
 		    descSize++;
                 }
-                if(getRightChild(getLeftChild(index)) < (size-1))
+                if(getRightChild(getLeftChild(index)) < (size))
                 {
                     descendants[descSize] = A[getRightChild(getLeftChild(index))];
 			descIndex[descSize] = getRightChild(getLeftChild(index));
 		    descSize++;
                 }
-                if(getLeftChild(getRightChild(index)) < (size - 1))
+                if(getLeftChild(getRightChild(index)) < (size))
                 {
                     descendants[descSize] = A[getLeftChild(getRightChild(index))];
 			descIndex[descSize] = getLeftChild(getRightChild(index));
 		    descSize++;
                 }
-                if(getRightChild(getRightChild(index)) < (size-1))
+                if(getRightChild(getRightChild(index)) < (size))
                 {
                     descendants[descSize] = A[getRightChild(getRightChild(index))];
 			descIndex[descSize] = getRightChild(getRightChild(index));
@@ -152,39 +152,39 @@ using std::stringstream;
 	//cout << size;
 	int descSize = 0;
 	//cout << "in trickedownmin";
-        if (getLeftChild(index) < (size-1))
+        if (getLeftChild(index) < (size))
         {
 	    //cout << "in first if";
             descendants[descSize] = A[getLeftChild(index)];
 	    descIndex[descSize] = getLeftChild(index);
 	    descSize++;
         
-            if(getRightChild(index) < (size-1))
+            if(getRightChild(index) < (size))
             {
                 descendants[descSize] = A[getRightChild(index)];
 		    descIndex[descSize] = getRightChild(index);
 		descSize++;
 
                 //grandchildren can only exist if there are two children for the passed index
-                if(getLeftChild(getLeftChild(index)) < (size-1))
+                if(getLeftChild(getLeftChild(index)) < (size))
                 {
                     descendants[descSize] = A[getLeftChild(getLeftChild(index))];
 			descIndex[descSize] = getLeftChild(getLeftChild(index));
 		    descSize++;
                 }
-                if(getRightChild(getLeftChild(index)) < (size-1))
+                if(getRightChild(getLeftChild(index)) < (size))
                 {
                     descendants[descSize] = A[getRightChild(getLeftChild(index))];
 			descIndex[descSize] = getRightChild(getLeftChild(index));
 		    descSize++;
                 }
-                if(getLeftChild(getRightChild(index)) < (size - 1))
+                if(getLeftChild(getRightChild(index)) < (size))
                 {
                     descendants[descSize] = A[getLeftChild(getRightChild(index))];
 			descIndex[descSize] = getLeftChild(getRightChild(index));
 		    descSize++;
                 }
-                if(getRightChild(getRightChild(index)) < (size-1))
+                if(getRightChild(getRightChild(index)) < (size))
                 {
                     descendants[descSize] = A[getRightChild(getRightChild(index))];
 			descIndex[descSize] = getRightChild(getRightChild(index));
@@ -240,6 +240,7 @@ using std::stringstream;
 
     void Minmax::bubbleUp(int index)
     {
+	
         if(onMinLevel(index))
         {
             if((index != 0) && (A[index] > A[getParent(index)]))
