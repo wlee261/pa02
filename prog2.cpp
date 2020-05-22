@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 {
     Minmax mm;
     string line;
-    ifstream myfile ("/autograder/submission/PA2_dataset.txt");
+    ifstream myfile ("PA2_dataset.txt");
     if (myfile.is_open())
     {
         while ( getline (myfile,line) )
