@@ -27,13 +27,13 @@ using std::stringstream;
 
     bool Minmax::onMaxLevel(int index)
     {
-        if(int(log2(index+1))%2 == 1)
+        if(log2(index+1)%2 == 0)
             return true;
         return false;
     }
     bool Minmax::onMinLevel(int index)
     {
-        if(int(log2(index+1))%2 == 0)
+        if(log2(index+1)%2 == 1)
             return true;
         return false;
     }
