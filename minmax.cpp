@@ -402,8 +402,10 @@ using std::stringstream;
 			}
 		}
 		command = command.substr(i, command.length() - i);
-		int seperate = atoi(command.c_str());
-		
+	        int seperate;
+	        seperate = atoi(command.c_str());
+	        if(isNeg)
+			seperate = seperate - 2*seperate;
 		return seperate;
 	
     }
