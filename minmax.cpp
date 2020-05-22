@@ -256,15 +256,19 @@ using std::stringstream;
             else
                 bubbleUpMin(index);
         }
-        else if((index != 0) && (A[index] < A[getParent(index)]))
+        else 
         {
-            int temp = A[index];
-            A[index] = A[getParent(index)];
-            A[getParent(index)] = temp;
-            bubbleUpMin(getParent(index));
+	    if((index != 0) && (A[index] < A[getParent(index)]))
+	    {
+		    int temp = A[index];
+		    A[index] = A[getParent(index)];
+		    A[getParent(index)] = temp;
+		    bubbleUpMin(getParent(index));
+	    }
+	    else
+                bubbleUpMax(index);
         }
-        else
-            bubbleUpMax(index);
+        
     }
 
     void Minmax::bubbleUpMin(int index)
