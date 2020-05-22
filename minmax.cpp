@@ -114,6 +114,7 @@ using std::stringstream;
 		    //cout<<"descendants[m] is grandchild? " << isGrandChild << std::endl;
                 
             }
+	    cout << "the min descendant is " << descendants[m] << " for A[0] of " << A[0] << std::endl;
             if(isGrandChild){
                 if(A[indexOfMin] < A[index])
                 {
