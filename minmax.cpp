@@ -129,7 +129,7 @@ using std::stringstream;
                         int temp = A[index];
                         A[index] = A[getParent(indexOfMin)];
                         A[getParent(indexOfMin)] = A[index];
-			trickeDownMin(getParent(indexOfMin));
+			trickleDownMin(getParent(indexOfMin));
                     }
 		    else
                         trickleDownMin(index);
