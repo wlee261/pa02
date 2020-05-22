@@ -341,6 +341,7 @@ using std::stringstream;
         size--;
 	//cout <<"new A0 is "<< A[0]<<std::endl;
         trickleDown(0);
+	    cout << "min is "" << min << std::endl;
         return "deleted " + to_string(min);
 
     }
