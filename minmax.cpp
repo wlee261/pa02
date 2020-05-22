@@ -124,13 +124,15 @@ using std::stringstream;
                     int temp = A[indexOfMin];
                     A[indexOfMin] = A[index];
                     A[index] = temp;
-                    if(A[indexOfMin] > A[getParent(indexOfMin)])
+                    if(A[index] > A[getParent(indexOfMin)])
                     {
-                        int temp = A[indexOfMin];
-                        A[indexOfMin] = A[getParent(indexOfMin)];
-                        A[getParent(indexOfMin)] = A[indexOfMin];
+                        int temp = A[index];
+                        A[index] = A[getParent(indexOfMin)];
+                        A[getParent(indexOfMin)] = A[index];
+			trickeDownMin(getParent(indexOfMin));
                     }
-                    trickleDownMin(indexOfMin);
+		    else
+                        trickleDownMin(index);
                 }
 
             }
