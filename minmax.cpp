@@ -140,7 +140,7 @@ using std::stringstream;
                     int temp = A[indexOfMin];
                     A[indexOfMin] = A[index];
                     A[index] = temp;
-			trickleDownMax(index);
+			//trickleDownMax(index);
                 }
         }
 
@@ -236,7 +236,7 @@ using std::stringstream;
                     int temp = A[indexOfMin];
                     A[indexOfMin] = A[index];
                     A[index] = temp;
-		    trickleDownMin(indexOfMin);
+		    //trickleDownMin(indexOfMin);
                 }
         }
 
