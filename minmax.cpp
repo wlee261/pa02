@@ -14,7 +14,7 @@ using std::stringstream;
 
     int Minmax::getParent(int index)
     {
-        return((floor(index-1)/2));
+        return(floor((index-1)/2));
     }
     int Minmax::getLeftChild(int index)
     {
