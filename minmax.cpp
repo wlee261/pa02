@@ -95,7 +95,7 @@ using std::stringstream;
                 }
             }
 	    m = 0;
-	    int indexOfMin = 0;
+	    int indexOfMin;
             for(int i = 0; i<descSize;i++){ //get minimum from children and grandchildren, stored in an array
                 
 		//cout << "in for loop";
