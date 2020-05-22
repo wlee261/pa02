@@ -273,7 +273,7 @@ using std::stringstream;
 
     void Minmax::bubbleUpMin(int index)
     {
-        if(getParent(getParent(index)) != 0)
+        if(getParent(index) != 0)
         {
             if(A[index] < A[getParent(getParent(index))])
             {
@@ -287,7 +287,7 @@ using std::stringstream;
 
     void Minmax::bubbleUpMax(int index)
     {
-        if(getParent(getParent(index)) != 0)
+        if(getParent(index) != 0)
         {
             if(A[index] > A[getParent(getParent(index))])
             {
