@@ -128,7 +128,7 @@ using std::stringstream;
                         A[getParent(indexOfMin)] = A[index];
 
                     }
-			cout << "A[0] is 1 " << A[0] << std::endl;
+			//cout << "A[0] is 1 " << A[0] << std::endl;
                         trickleDownMin(indexOfMin);
                 }
 
