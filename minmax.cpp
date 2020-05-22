@@ -138,7 +138,7 @@ using std::stringstream;
                     int temp = A[indexOfMin];
                     A[indexOfMin] = A[index];
                     A[index] = temp;
-		    cout << "A[0] is 2 " << A[0] << std::endl;
+		    //cout << "A[0] is 2 " << A[0] << std::endl;
 			//trickleDownMax(index);
                 }
         }
