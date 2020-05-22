@@ -198,7 +198,7 @@ using std::stringstream;
 		//cout << "in for loop";
 		//cout << "this is the " << i << " " << descendants[i]<<std::endl;
                      
-                    if(descendants[i] < descendants[m])
+                    if(descendants[i] > descendants[m])
                     {
                         m = i;
                         if(m > 1)
