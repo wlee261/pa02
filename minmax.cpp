@@ -27,15 +27,11 @@ using std::stringstream;
 
     bool Minmax::onMaxLevel(int index)
     {
-        if(log2(index+1)%2 == 0)
-            return true;
-        return false;
+        return(int(log2(index+1))%2 == 1);
     }
     bool Minmax::onMinLevel(int index)
     {
-        if(log2(index+1)%2 == 1)
-            return true;
-        return false;
+        return(!onMaxLevel());
     }
 
     void Minmax::trickleDown(int index)
