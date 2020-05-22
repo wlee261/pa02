@@ -131,7 +131,7 @@ using std::stringstream;
                         A[getParent(indexOfMin)] = A[index];
 
                     }
-                        trickleDownMin(index);
+                        trickleDownMin(indexOfMin);
                 }
 
             }
