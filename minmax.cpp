@@ -391,9 +391,15 @@ using std::stringstream;
 	cout << "4";
         return value;*/
 	        int i = 0;
+	        bool isNeg = false;
 		for(; i < command.length(); i++)
 		{
-			if(isdigit(command[i])) break;
+			if(isdigit(command[i])) 
+			{
+			    if(command[i-1] == '-')
+				    isNeg = true;
+			    break;
+			}
 		}
 		command = command.substr(i, command.length() - i);
 		int seperate = atoi(command.c_str());
